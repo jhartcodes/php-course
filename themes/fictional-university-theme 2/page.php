@@ -18,6 +18,8 @@
 <div class="container container--narrow page-section">
 
     <?php
+
+    // the parent variable calls a wp function with another wp function, get always returns a the value, 
       $theParent = wp_get_post_parent_id(get_the_ID());
       if ($theParent) { ?>
     <div class="metabox metabox--position-up metabox--with-home-link">
@@ -28,22 +30,37 @@
     <?php }
     ?>
 
-    <!--
-      <div class="page-links">
-        <h2 class="page-links__title"><a href="#">About Us</a></h2>
+    <?php
+    // if current page has children this array will retrun all the children, if not then it returns 0, we can use this to dynamically render the breadcrumb if the id has a parent.
+    $testArray = get_pages(array(
+      'child_of' => get_the_ID()
+    ));
+    
+    if ($theParent or $testArray) { ?>
+    <div class="page-links">
+        <!-- get the title page returns 0 if its a parent and the function will return the current page-->
+        <h2 class="page-links__title"><a
+                href="<?php  echo get_permalink($theParent);?>"><?php echo get_the_title($theParent);?> </a></h2>
         <ul class="min-list">
-          <li class="current_page_item"><a href="#">Our History</a></li>
-          <li><a href="#">Our Goals</a></li>
+            <?php 
+            // if there are no children the findChildren of function doesn't run. 
+          if ($theParent){
+          $findChildrenOf = $theParent;
+          } else {
+              $findChildrenOf = get_the_ID();
+          }  
+            wp_list_pages( array(
+              'title_li' => NULL,
+              'child_of' => $findChildrenOf,
+              'sort_colum' => 'menu_order'
+            ))?>
         </ul>
-      </div>
-
-  -->
-
+    </div>
     <div class="generic-content">
         <?php the_content()?>
     </div>
 </div>
-
+<?php }?>
 <?php }
 
   get_footer();
