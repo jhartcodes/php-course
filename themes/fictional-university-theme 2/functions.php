@@ -16,7 +16,13 @@ add_action('wp_enqueue_scripts', 'university_files');
 
 // This function adds a a title tag to the tab of each browser. Rather than adding one to each html document this automates it. 
 function university_features(){
+    // This adds menus to the wp-admin site. 
+register_nav_menu('headerMenuLocation', 'Header Menu Location ');
+register_nav_menu('footerLocationOne', 'Footer Location One');
+register_nav_menu('footerLocationTwo', 'Footer Location Two');
 add_theme_support('title-tag');
 
 }
 add_action('after_setup_theme', 'university_features');
+
+// To add theme na
