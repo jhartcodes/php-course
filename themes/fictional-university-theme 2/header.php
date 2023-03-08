@@ -23,17 +23,15 @@
             <div class="site-header__menu group">
                 <nav class="main-navigation">
 
-                    <?php 
-                // headerMenuLocation is set in functions wp_nav_menu needs an array with theme_location   
+                    <!-- headerMenuLocation is set in functions wp_nav_menu needs an array with theme_location -->
+                    <!-- <?php 
                 wp_nav_menu(array(
                     'theme_location' => 'headerMenuLocation'
                 ))
-                ?>
+                ?> -->
 
                     <!-- nav links in code for one off client keep it here, however if you want to make a theme, you want it to be flexible and controllable -->
                     <!-- because local could have multiple sites instead of/aboutus  for links i use php function site_url -->
-
-                    <!---
                     <ul>
                         <li><a href="<?php echo site_url('/about-us') ?>">About Us</a></li>
                         <li><a href="<?php site_url('/about-us') ?>">Programs</a></li>
@@ -41,8 +39,6 @@
                         <li><a href="#">Campuses</a></li>
                         <li><a href="#">Blog</a></li>
                     </ul>
-                    --->
-
                 </nav>
                 <div class="site-header__util">
                     <a href="#" class="btn btn--small btn--orange float-left push-right">Login</a>
