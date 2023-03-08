@@ -21,6 +21,7 @@ get_header();?>
                 href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
         <div class="metabox">
+            <!-- Functions below display the author name (can change nickname), the day as day.month.year https://wordpress.org/documentation/article/customize-date-and-time-format/, catergory of the blog  -->
             <p>Posted by <?php the_author_posts_link(); ?> on <?php the_time('n.j.y'); ?> in
                 <?php echo get_the_category_list(', '); ?></p>
         </div>
