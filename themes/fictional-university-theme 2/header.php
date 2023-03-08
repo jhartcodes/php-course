@@ -33,7 +33,11 @@
                     <!-- nav links in code for one off client keep it here, however if you want to make a theme, you want it to be flexible and controllable -->
                     <!-- because local could have multiple sites instead of/aboutus  for links i use php function site_url -->
                     <ul>
-                        <li><a href="<?php echo site_url('/about-us') ?>">About Us</a></li>
+                        <!-- slug about-us will apply current-menu-item css class if it is that page wp_get_post_parent_id  -->
+                        <li
+                            <?php if (is_page('about-us') or wp_get_post_parent_id(0) == 9 ) echo'class="current-menu-item"'?>>
+                            <a href="<?php echo site_url('/about-us') ?>">About Us</a>
+                        </li>
                         <li><a href="<?php site_url('/about-us') ?>">Programs</a></li>
                         <li><a href="<?php site_url('/about-us') ?>">Events</a></li>
                         <li><a href="#">Campuses</a></li>
